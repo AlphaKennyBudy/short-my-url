@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const webshot = require("node-webshot");
+const path = require("path");
 
 const app = express();
 
