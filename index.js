@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const webshot = require("node-webshot");
-// const path = require("path");
+const path = require("path");
 
 const app = express();
 
@@ -11,7 +11,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   const url = req.query.url;
 
-  var renderStream = webshot(url);
+  var renderStream = webshot(url, "./output.png", {
+    phantomPath: path.join(__dirname, "vendor/phantomjs/bin/phantomjs"),
+  });
 
   var buffer = Buffer.from("");
 
