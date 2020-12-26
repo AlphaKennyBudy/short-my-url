@@ -9,7 +9,8 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  const url = req.query.url;
+  const url = req.query.url || "google.com";
+  res.send(url);
 
   var renderStream = webshot(url, "./output.png", {
     phantomPath: path.join(__dirname, "vendor/phantomjs/bin/phantomjs"),
